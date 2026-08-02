@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rateio do Café — Extrato da Equipe</title>
+<meta name="description" content="Prestação de contas mensal do café compartilhado do escritório.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind (utilities only, aesthetic lives in custom CSS below) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<!-- Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<style>
+  :root{
+    --page-bg: #E3D8BF;
+    --page-bg-2: #DCCFB2;
+    --paper: #FAF5E9;
+    --paper-alt: #F3ECDB;
+    --ink: #2B2420;
+    --ink-soft: #6B5F51;
+    --ink-faint: #9A8D7B;
+    --gold: #B4842A;
+    --gold-deep: #8A6420;
+    --green: #3D6B54;
+    --green-bg: #E4EEE6;
+    --red: #A6402F;
+    --red-bg: #F5E5E0;
+    --line: rgba(43,36,32,0.16);
+    --shadow: rgba(43,30,15,0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, var(--page-bg-2), transparent 55%),
+      radial-gradient(circle at 90% 100%, var(--page-bg-2), transparent 55%),
+      var(--page-bg);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  .font-display{ font-family: 'Space Grotesk', sans-serif; }
+  .font-mono{ font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- The receipt itself ---------- */
+  .receipt{
+    position: relative;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -20px var(--shadow), 0 2px 0 rgba(255,255,255,0.6) inset;
+  }
+  .receipt-zig{
+    position: absolute;
+    left: 0; right: 0;
+    height: 11px;
+    background:
+      linear-gradient(135deg, var(--page-bg-2) 50%, transparent 50%) 0 0,
+      linear-gradient(-135deg, var(--page-bg-2) 50%, transparent 50%) 0 0;
+    background-size: 18px 22px;
+    background-repeat: repeat-x;
+  }
+  .receipt-zig.top{ top: -10px; }
+  .receipt-zig.bottom{ bottom: -10px; transform: scaleY(-1); }
+
+  .dashed-rule{
+    border-top: 2px dashed var(--line);
+  }
+
+  .leader{
+    flex: 1 1 auto;
+    border-bottom: 2px dotted var(--ink-faint);
+    height: 0.6em;
+    margin: 0 10px;
+    min-width: 12px;
+  }
+
+  /* ---------- Stamps ---------- */
+  .stamp{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border: 2px solid currentColor;
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transform: rotate(-4deg);
+    white-space: nowrap;
+  }
+  .stamp-pago{ color: var(--green); background: var(--green-bg); }
+  .stamp-pendente{ color: var(--red); background: var(--red-bg); transform: rotate(3deg); }
+
+  .status-chip{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Category tag dots ---------- */
+  .cat-dot{ width: 8px; height: 8px; border-radius: 999px; display:inline-block; flex-shrink:0; }
+  .cat-cafe{ background: var(--gold); }
+  .cat-leite{ background: #7C8F6B; }
+  .cat-uten{ background: #6E8CA0; }
+  .cat-outros{ background: var(--ink-faint); }
+
+  /* ---------- Barcode footer ---------- */
+  .barcode{
+    height: 34px;
+    background-image: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 10px);
+    opacity: 0.75;
+  }
+
+  ::selection{ background: var(--gold); color: #fff; }
+
+  select.month-select{
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232B2420' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(8px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  .fade-up{ animation: fadeUp .35s ease both; }
+</style>
+</head>
+
+<body x-data="rateioApp()" x-init="init()" class="antialiased">
+
+  <div class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+
+    <!-- ============ HEADER ============ -->
+    <header class="text-center mb-8">
+      <p class="font-mono text-xs tracking-[0.25em] uppercase" style="color:var(--ink-faint)">Equipe &middot; Copa &middot; Cafeteira coletiva</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color:var(--ink)">☕ Rateio do Café</h1>
+      <p class="text-sm mt-2" style="color:var(--ink-soft)">Extrato público de arrecadação e gastos — sem enrolação, sem letra miúda.</p>
+    </header>
+
+    <!-- ============ RECEIPT CARD ============ -->
+    <main class="receipt relative px-5 sm:px-10 py-10" x-cloak x-show="!erro">
+      <div class="receipt-zig top"></div>
+
+      <!-- Loading -->
+      <template x-if="carregando">
+        <div class="py-16 text-center font-mono text-sm" style="color:var(--ink-faint)">carregando extrato…</div>
+      </template>
+
+      <template x-if="!carregando && dados">
+        <div class="fade-up">
+
+          <!-- Seletor de mês + status -->
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <div class="flex items-center gap-2">
+              <label for="mes" class="font-mono text-xs uppercase tracking-wider" style="color:var(--ink-faint)">Referência</label>
+              <select id="mes" x-model="mesSelecionado" @change="carregarMes()"
+                class="month-select font-mono text-sm font-bold border-2 rounded-md pl-3 pr-8 py-1.5 cursor-pointer"
+                style="border-color: var(--line); background-color: var(--paper-alt); color: var(--ink);">
+                <template x-for="m in meses" :key="m.ref">
+                  <option :value="m.ref" x-text="m.label"></option>
+                </template>
+              </select>
+            </div>
+
+            <span class="status-chip"
+              :style="dados.status === 'aberto'
+                ? 'background:var(--green-bg); color:var(--green)'
+                : 'background:var(--paper-alt); color:var(--ink-soft)'"
+              x-text="dados.status === 'aberto' ? '● Mês em aberto' : '✓ Mês fechado'"></span>
+          </div>
+
+          <p class="font-mono text-[11px] mb-6" style="color:var(--ink-faint)">
+            Caixinha sob responsabilidade de <span class="font-bold" style="color:var(--ink-soft)" x-text="dados.responsavel_caixa"></span> · <span x-text="pendentes.length"></span> pendência(s) este mês
+          </p>
+
+          <div class="dashed-rule mb-6"></div>
+
+          <!-- ============ KPIs ============ -->
+          <section class="grid grid-cols-2 gap-x-6 gap-y-5 mb-8">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Arrecadado</p>
+              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--green)" x-text="formatarMoeda(totalArrecadado)"></p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Gasto</p>
+              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--red)" x-text="formatarMoeda(totalGasto)"></p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Saldo do mês</p>
+              <p class="font-mono text-2xl font-bold mt-1"
+                :style="saldoMes >= 0 ? 'color:var(--gold-deep)' : 'color:var(--red)'"
+                x-text="formatarMoeda(saldoMes)"></p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Saldo acumulado</p>
+              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--ink)" x-text="formatarMoeda(saldoAcumulado)"></p>
+            </div>
+          </section>
+
+          <div class="dashed-rule mb-8"></div>
+
+          <!-- ============ CONTRIBUINTES ============ -->
+          <section class="mb-10">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display font-bold text-lg">Contribuintes</h2>
+              <span class="font-mono text-[11px]" style="color:var(--ink-faint)"
+                x-text="dados.contribuintes.filter(c=>c.pago).length + ' / ' + dados.contribuintes.length + ' pagaram'"></span>
+            </div>
+
+            <ul class="space-y-3">
+              <template x-for="c in dados.contribuintes" :key="c.nome">
+                <li class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-2 min-w-0">
+                    <span class="font-medium text-sm truncate" x-text="c.nome"></span>
+                  </div>
+                  <div class="leader"></div>
+                  <div class="flex items-center gap-3 shrink-0">
+                    <span class="font-mono text-sm" style="color:var(--ink-soft)"
+                      x-text="formatarMoeda(c.pago ? (c.valor_pago || c.cota_sugerida) : c.cota_sugerida)"></span>
+                    <span class="stamp" :class="c.pago ? 'stamp-pago' : 'stamp-pendente'">
+                      <span x-text="c.pago ? 'Pago' : 'Pendente'"></span>
+                      <span x-show="c.pago">✓</span>
+                      <span x-show="!c.pago">⏳</span>
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </section>
+
+          <div class="dashed-rule mb-8"></div>
+
+          <!-- ============ GASTOS ============ -->
+          <section class="mb-10">
+            <h2 class="font-display font-bold text-lg mb-4">Gastos &amp; Compras</h2>
+
+            <ul class="space-y-4">
+              <template x-for="g in gastosOrdenados" :key="g.data + g.item">
+                <li>
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                      <div class="flex items-center gap-2">
+                        <span class="cat-dot" :class="catClass(g.categoria)"></span>
+                        <span class="font-medium text-sm truncate" x-text="g.item"></span>
+                      </div>
+                      <p class="font-mono text-[11px] mt-1" style="color:var(--ink-faint)">
+                        <span x-text="formatarData(g.data)"></span> · <span x-text="g.local"></span> · qtd. <span x-text="g.quantidade"></span> · <span x-text="g.responsavel"></span>
+                      </p>
+                    </div>
+                    <span class="font-mono text-sm font-bold shrink-0" style="color:var(--ink)" x-text="formatarMoeda(g.valor_total)"></span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+
+            <template x-if="dados.gastos.length === 0">
+              <p class="text-sm italic" style="color:var(--ink-faint)">Nenhum gasto registrado neste mês ainda.</p>
+            </template>
+          </section>
+
+          <div class="dashed-rule mb-8"></div>
+
+          <!-- ============ GRÁFICO POR CATEGORIA ============ -->
+          <section class="mb-8">
+            <h2 class="font-display font-bold text-lg mb-4">Gastos por categoria</h2>
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+              <div class="w-44 h-44 shrink-0">
+                <canvas x-ref="chartCanvas"></canvas>
+              </div>
+              <ul class="w-full space-y-2">
+                <template x-for="cat in gastosPorCategoria" :key="cat.nome">
+                  <li class="flex items-center justify-between text-sm">
+                    <span class="flex items-center gap-2">
+                      <span class="cat-dot" :class="catClass(cat.nome)"></span>
+                      <span x-text="cat.nome"></span>
+                    </span>
+                    <span class="font-mono font-semibold" x-text="formatarMoeda(cat.total)"></span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </section>
+
+          <div class="dashed-rule mb-6"></div>
+
+          <p class="text-center text-xs italic" style="color:var(--ink-faint)">
+            Este extrato não tem valor fiscal — só o valor de manter a cafeteira rodando. ☕
+          </p>
+        </div>
+      </template>
+
+      <div class="receipt-zig bottom"></div>
+    </main>
+
+    <div class="barcode mt-8 mx-auto max-w-xs"></div>
+    <p class="text-center font-mono text-[10px] mt-3 tracking-widest uppercase" style="color:var(--ink-faint)">
+      dados lidos de /data · sem backend · atualize o json todo mês
+    </p>
+
+    <template x-if="erro">
+      <div class="receipt relative px-6 py-10 text-center">
+        <p class="font-mono text-sm" style="color:var(--red)">Não foi possível carregar os dados (<span x-text="erro"></span>).</p>
+        <p class="text-xs mt-2" style="color:var(--ink-faint)">Se você abriu o arquivo direto no navegador (file://), rode um servidor local — veja o README.</p>
+      </div>
+    </template>
+
+  </div>
+
+<script>
+function rateioApp(){
+  return {
+    meses: [],
+    mesSelecionado: null,
+    dados: null,
+    carregando: true,
+    erro: null,
+    chart: null,
+
+    async init(){
+      try{
+        const idx = await fetch('data/index.json').then(r => {
+          if(!r.ok) throw new Error('data/index.json não encontrado');
+          return r.json();
+        });
+        this.meses = idx.meses;
+        if(this.meses.length === 0) throw new Error('nenhum mês cadastrado em data/index.json');
+        this.mesSelecionado = this.meses[0].ref;
+        await this.carregarMes();
+      }catch(e){
+        this.erro = e.message;
+        this.carregando = false;
+      }
+    },
+
+    async carregarMes(){
+      this.carregando = true;
+      try{
+        const meta = this.meses.find(m => m.ref === this.mesSelecionado);
+        const dados = await fetch(meta.arquivo).then(r => {
+          if(!r.ok) throw new Error(meta.arquivo + ' não encontrado');
+          return r.json();
+        });
+        this.dados = dados;
+        this.carregando = false;
+        this.$nextTick(() => this.renderChart());
+      }catch(e){
+        this.erro = e.message;
+        this.carregando = false;
+      }
+    },
+
+    get totalArrecadado(){
+      return this.dados.contribuintes.reduce((soma, c) => soma + (c.pago ? (c.valor_pago ?? c.cota_sugerida) : 0), 0);
+    },
+    get totalGasto(){
+      return this.dados.gastos.reduce((soma, g) => soma + g.valor_total, 0);
+    },
+    get saldoMes(){
+      return this.totalArrecadado - this.totalGasto;
+    },
+    get saldoAcumulado(){
+      return (this.dados.saldo_anterior || 0) + this.saldoMes;
+    },
+    get pendentes(){
+      return this.dados.contribuintes.filter(c => !c.pago);
+    },
+    get gastosOrdenados(){
+      return [...this.dados.gastos].sort((a,b) => new Date(a.data) - new Date(b.data));
+    },
+    get gastosPorCategoria(){
+      const mapa = {};
+      this.dados.gastos.forEach(g => { mapa[g.categoria] = (mapa[g.categoria] || 0) + g.valor_total; });
+      return Object.entries(mapa).map(([nome, total]) => ({ nome, total })).sort((a,b) => b.total - a.total);
+    },
+
+    catClass(categoria){
+      const mapa = {
+        'Café/Açúcar': 'cat-cafe',
+        'Leite/Biscoitos': 'cat-leite',
+        'Utensílios/Descartáveis': 'cat-uten',
+        'Outros': 'cat-outros'
+      };
+      return mapa[categoria] || 'cat-outros';
+    },
+
+    formatarMoeda(v){
+      return (v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    },
+    formatarData(d){
+      const [ano, mes, dia] = d.split('-');
+      return `${dia}/${mes}`;
+    },
+
+    renderChart(){
+      if(this.chart) this.chart.destroy();
+      const cores = { 'Café/Açúcar': '#B4842A', 'Leite/Biscoitos': '#7C8F6B', 'Utensílios/Descartáveis': '#6E8CA0', 'Outros': '#9A8D7B' };
+      const cats = this.gastosPorCategoria;
+      const ctx = this.$refs.chartCanvas.getContext('2d');
+      this.chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: cats.map(c => c.nome),
+          datasets: [{
+            data: cats.map(c => c.total),
+            backgroundColor: cats.map(c => cores[c.nome] || '#9A8D7B'),
+            borderColor: '#FAF5E9',
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          cutout: '68%',
+          plugins: { legend: { display: false }, tooltip: { enabled: true } }
+        }
+      });
+    }
+  };
+}
+</script>
+</body>
+</html>
