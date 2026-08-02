@@ -1,0 +1,23 @@
+{
+  "mes_referencia": "2026-07",
+  "label": "Julho/2026",
+  "status": "fechado",
+  "responsavel_caixa": "Rafael Souza",
+  "saldo_anterior": 18.75,
+  "contribuintes": [
+    { "nome": "Marina Alves",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-02" },
+    { "nome": "Rafael Souza",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-02" },
+    { "nome": "Juliana Prado",  "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-03" },
+    { "nome": "Carlos Nunes",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-05" },
+    { "nome": "Beatriz Lima",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-05" },
+    { "nome": "Diego Ferreira", "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-08" },
+    { "nome": "Patrícia Gomes", "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-08" },
+    { "nome": "Thiago Rocha",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-09" }
+  ],
+  "gastos": [
+    { "data": "2026-07-03", "categoria": "Café/Açúcar",             "item": "Café torrado e moído 1kg (x3)", "local": "Supermercado Bretas", "quantidade": 3, "valor_total": 64.20, "responsavel": "Rafael Souza" },
+    { "data": "2026-07-06", "categoria": "Leite/Biscoitos",         "item": "Leite integral longa vida (caixa c/12)", "local": "Assaí Atacadista", "quantidade": 1, "valor_total": 63.90, "responsavel": "Juliana Prado" },
+    { "data": "2026-07-11", "categoria": "Utensílios/Descartáveis", "item": "Copos descartáveis 200ml (pacote c/100)", "local": "Papelaria Central", "quantidade": 2, "valor_total": 16.60, "responsavel": "Diego Ferreira" },
+    { "data": "2026-07-20", "categoria": "Outros",                  "item": "Pano de prato e sabão em pó", "local": "Mercadinho do Zé", "quantidade": 1, "valor_total": 9.90, "responsavel": "Patrícia Gomes" }
+  ]
+}
