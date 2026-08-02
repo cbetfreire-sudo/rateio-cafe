@@ -9,6 +9,6 @@
     { "nome": "TESTE 2",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-04" },
   ],
   "gastos": [
-    { "data": "2026-08-02", "categoria": "Café/Açúcar",              "item": "Café torrado e moído 1kg (x2)", "local": "Supermercado Bretas",   "quantidade": 2, "valor_total": 42.80, "responsavel": "Marina Alves" },
+    { "data": "2026-06-02", "categoria": "Café/Açúcar",              "item": "Café torrado e moído 1kg (x2)", "local": "Supermercado Bretas",   "quantidade": 2, "valor_total": 42.80, "responsavel": "Marina Alves" },
       ]
 }
