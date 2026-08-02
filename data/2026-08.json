@@ -3,15 +3,10 @@
   "label": "Agosto/2026",
   "status": "aberto",
   "responsavel_caixa": "Marina Alves",
-  "saldo_anterior": 42.30,
+  "saldo_anterior": 00.30,
   "contribuintes": [
-    { "nome": "WALLACE FREIRE",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-03" },
-    { "nome": "Rafael Souza",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-04" },
-    { "nome": "Juliana Prado",  "cota_sugerida": 20.00, "pago": true,  "valor_pago": 25.00, "data_pagamento": "2026-08-04" },
-    { "nome": "Carlos Nunes",   "cota_sugerida": 20.00, "pago": false, "valor_pago": 0,     "data_pagamento": null },
-    { "nome": "Beatriz Lima",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-06" },
-    { "nome": "Diego Ferreira", "cota_sugerida": 20.00, "pago": false, "valor_pago": 0,     "data_pagamento": null },
-    { "nome": "Patrícia Gomes", "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-07" },
+    { "nome": "WALLACE FREIRE",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 30.00, "data_pagamento": "2026-08-03" },
+    { "nome": "RENATA",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 30.00, "data_pagamento": "2026-08-04" },
     { "nome": "Thiago Rocha",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-10" }
   ],
   "gastos": [
