@@ -5,7 +5,7 @@
   "responsavel_caixa": "Rafael Souza",
   "saldo_anterior": 18.75,
   "contribuintes": [
-    { "nome": "Marina Alves",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-02" },
+    { "nome": "FREIRE WALLACE",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-02" },
     { "nome": "Rafael Souza",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-02" },
     { "nome": "Juliana Prado",  "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-03" },
     { "nome": "Carlos Nunes",   "cota_sugerida": 20.00, "pago": true, "valor_pago": 20.00, "data_pagamento": "2026-07-05" },
