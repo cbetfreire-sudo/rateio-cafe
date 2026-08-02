@@ -3,7 +3,7 @@
   "label": "junho/2026",
   "status": "fechado",
   "responsavel_caixa": "SG FREIRE",
-  "saldo_anterior": 00.00,
+  "saldo_anterior": 00.01,
   "contribuintes": [
     { "nome": "TESTE 1",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-03" },
     { "nome": "TESTE 2",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-04" },
