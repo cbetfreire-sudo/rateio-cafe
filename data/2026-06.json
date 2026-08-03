@@ -1,14 +1,9 @@
 {
   "mes_referencia": "2026-06",
-  "label": "junho/2026",
-  "status": "fechado",
+  "label": "Junho/2026",
+  "status": "aberto",
   "responsavel_caixa": "SG FREIRE",
-  "saldo_anterior": 00.00,
-  "contribuintes": [
-    { "nome": "TESTE 1",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-03" },
-    { "nome": "TESTE 2",   "cota_sugerida": 20.00, "pago": true,  "valor_pago": 20.00, "data_pagamento": "2026-08-04" },
-  ],
-  "gastos": [
-    { "data": "2026-08-02", "categoria": "Café/Açúcar",              "item": "Café torrado e moído 1kg (x2)", "local": "Supermercado Bretas",   "quantidade": 2, "valor_total": 42.80, "responsavel": "Marina Alves" },
-      ]
+  "saldo_anterior": 0.0,
+  "contribuintes": [],
+  "gastos": []
 }
