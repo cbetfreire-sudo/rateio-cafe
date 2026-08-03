@@ -1,442 +1,1033 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rateio do Café — Extrato da Equipe</title>
-<meta name="description" content="Prestação de contas mensal do café compartilhado do escritório.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Rateio do Café — Extrato da Equipe</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-escuro: #0b3d6e;
+      --azul-principal: #155e9e;
+      --azul-medio: #1976c5;
+      --azul-claro: #dceeff;
+      --azul-muito-claro: #f1f7fc;
+      --cor-fundo: #f4f8fc;
+      --cor-texto: #1f2937;
+      --cor-texto-suave: #60758a;
+      --cor-borda: #d7e3ef;
+      --cor-sucesso: #13795b;
+      --cor-alerta: #a15c00;
+      --cor-erro: #a52828;
+      --sombra: 0 10px 30px rgba(21, 94, 158, 0.10);
+      --raio: 16px;
+    }
 
-<!-- Tailwind (utilities only, aesthetic lives in custom CSS below) -->
-<script src="https://cdn.tailwindcss.com"></script>
+    * {
+      box-sizing: border-box;
+    }
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    body {
+      margin: 0;
+      background: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
 
-<!-- Alpine.js -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-<style>
-  :root{
-    --page-bg: #E3D8BF;
-    --page-bg-2: #DCCFB2;
-    --paper: #FAF5E9;
-    --paper-alt: #F3ECDB;
-    --ink: #2B2420;
-    --ink-soft: #6B5F51;
-    --ink-faint: #9A8D7B;
-    --gold: #B4842A;
-    --gold-deep: #8A6420;
-    --green: #3D6B54;
-    --green-bg: #E4EEE6;
-    --red: #A6402F;
-    --red-bg: #F5E5E0;
-    --line: rgba(43,36,32,0.16);
-    --shadow: rgba(43,30,15,0.18);
-  }
+    header {
+      padding: 36px 0 32px;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(11, 61, 110, 0.98),
+          rgba(21, 94, 158, 0.95)
+        );
+    }
 
-  * { box-sizing: border-box; }
+    .titulo-site {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-  body{
-    background:
-      radial-gradient(circle at 15% 0%, var(--page-bg-2), transparent 55%),
-      radial-gradient(circle at 90% 100%, var(--page-bg-2), transparent 55%),
-      var(--page-bg);
-    background-attachment: fixed;
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-  }
+    .titulo-site h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.04em;
+    }
 
-  .font-display{ font-family: 'Space Grotesk', sans-serif; }
-  .font-mono{ font-family: 'JetBrains Mono', monospace; }
+    .imagem-cafe {
+      width: 130px;
+      height: 130px;
+      flex: 0 0 58px;
+      object-fit: contain;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.14);
+      padding: 3px;
+    }
 
-  /* ---------- The receipt itself ---------- */
-  .receipt{
-    position: relative;
-    background: var(--paper);
-    box-shadow: 0 30px 60px -20px var(--shadow), 0 2px 0 rgba(255,255,255,0.6) inset;
-  }
-  .receipt-zig{
-    position: absolute;
-    left: 0; right: 0;
-    height: 11px;
-    background:
-      linear-gradient(135deg, var(--page-bg-2) 50%, transparent 50%) 0 0,
-      linear-gradient(-135deg, var(--page-bg-2) 50%, transparent 50%) 0 0;
-    background-size: 18px 22px;
-    background-repeat: repeat-x;
-  }
-  .receipt-zig.top{ top: -10px; }
-  .receipt-zig.bottom{ bottom: -10px; transform: scaleY(-1); }
+    header p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+    }
 
-  .dashed-rule{
-    border-top: 2px dashed var(--line);
-  }
+    .barra-controles {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: 16px;
+      margin-top: 28px;
+    }
 
-  .leader{
-    flex: 1 1 auto;
-    border-bottom: 2px dotted var(--ink-faint);
-    height: 0.6em;
-    margin: 0 10px;
-    min-width: 12px;
-  }
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-  /* ---------- Stamps ---------- */
-  .stamp{
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px;
-    border: 2px solid currentColor;
-    border-radius: 5px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transform: rotate(-4deg);
-    white-space: nowrap;
-  }
-  .stamp-pago{ color: var(--green); background: var(--green-bg); }
-  .stamp-pendente{ color: var(--red); background: var(--red-bg); transform: rotate(3deg); }
+    .campo label {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
 
-  .status-chip{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 999px;
-  }
+    select,
+    button {
+      min-height: 42px;
+      border-radius: 10px;
+      border: 1px solid var(--cor-borda);
+      font: inherit;
+    }
 
-  /* ---------- Category tag dots ---------- */
-  .cat-dot{ width: 8px; height: 8px; border-radius: 999px; display:inline-block; flex-shrink:0; }
-  .cat-cafe{ background: var(--gold); }
-  .cat-leite{ background: #7C8F6B; }
-  .cat-uten{ background: #6E8CA0; }
-  .cat-outros{ background: var(--ink-faint); }
+    select {
+      min-width: 230px;
+      padding: 0 12px;
+      background: #fff;
+      color: var(--cor-texto);
+    }
 
-  /* ---------- Barcode footer ---------- */
-  .barcode{
-    height: 34px;
-    background-image: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 10px);
-    opacity: 0.75;
-  }
+    button {
+      padding: 0 18px;
+      cursor: pointer;
+      border-color: rgba(255, 255, 255, 0.35);
+      background: #fff;
+      color: var(--azul-escuro);
+      font-weight: 700;
+    }
 
-  ::selection{ background: var(--gold); color: #fff; }
+    button:hover {
+      background: var(--azul-muito-claro);
+    }
 
-  select.month-select{
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232B2420' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-  }
+    main {
+      padding: 32px 0 48px;
+    }
 
-  @keyframes fadeUp{
-    from{ opacity:0; transform: translateY(8px); }
-    to{ opacity:1; transform: translateY(0); }
-  }
-  .fade-up{ animation: fadeUp .35s ease both; }
-</style>
+    .mensagem {
+      display: none;
+      margin-bottom: 24px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid;
+    }
+
+    .mensagem.visivel {
+      display: block;
+    }
+
+    .mensagem.erro {
+      color: var(--cor-erro);
+      border-color: #e5b6b6;
+      background: #fff3f3;
+    }
+
+    .mensagem.aviso {
+      color: var(--cor-alerta);
+      border-color: #ead2a7;
+      background: #fff8e9;
+    }
+
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .status h2 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+
+    .status-info {
+      color: var(--cor-texto-suave);
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge.aberto {
+      color: var(--cor-sucesso);
+      background: #e8f5ef;
+    }
+
+    .badge.fechado {
+      color: var(--cor-texto-suave);
+      background: #eeeeee;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio);
+      background: #fff;
+      box-shadow: var(--sombra);
+    }
+
+    .card.destaque {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(
+        135deg,
+        var(--azul-escuro),
+        var(--azul-medio)
+      );
+    }
+
+    .card-titulo {
+      margin-bottom: 8px;
+      color: var(--cor-texto-suave);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .card.destaque .card-titulo {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .card-valor {
+      overflow-wrap: anywhere;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .grid-conteudo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .secao {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio);
+      background: #fff;
+      box-shadow: var(--sombra);
+    }
+
+    .secao h3 {
+      margin: 0 0 18px;
+      color: var(--azul-escuro);
+      font-size: 1.18rem;
+    }
+
+    .tabela-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--cor-borda);
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      color: var(--cor-texto-suave);
+      background: var(--azul-muito-claro);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    td.valor,
+    th.valor {
+      text-align: right;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .estado {
+      display: inline-flex;
+      align-items: center;
+      min-height: 25px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .estado.pago {
+      color: var(--cor-sucesso);
+      background: #e8f5ef;
+    }
+
+    .estado.pendente {
+      color: var(--cor-alerta);
+      background: #fff2d9;
+    }
+
+    .vazio,
+    .carregando {
+      padding: 20px 0 4px;
+      color: var(--cor-texto-suave);
+      text-align: center;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--cor-texto-suave);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-conteudo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .titulo-site {
+        align-items: flex-start;
+      }
+
+      .imagem-cafe {
+        width: 58px;
+        height: 58;
+        flex-basis: 58px;
+      }
+
+      .titulo-site h1 {
+        font-size: 1.65rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .barra-controles {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      select,
+      button {
+        width: 100%;
+      }
+
+      .secao {
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
 
-<body x-data="rateioApp()" x-init="init()" class="antialiased">
+<body>
+  <header>
+    <div class="container">
+      <div class="titulo-site">
+        <img
+          id="imagem-cafe"
+          class="imagem-cafe"
+          src="data/caneca-cafe.png"
+          alt="Imagem de uma xícara de café"
+        >
 
-  <div class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
-
-    <!-- ============ HEADER ============ -->
-    <header class="text-center mb-8">
-      <p class="font-mono text-xs tracking-[0.25em] uppercase" style="color:var(--ink-faint)">Equipe &middot; Copa &middot; Cafeteira coletiva</p>
-      <h1 class="font-display text-4xl sm:text-5xl font-bold mt-2" style="color:var(--ink)">☕ Rateio do Café</h1>
-      <p class="text-sm mt-2" style="color:var(--ink-soft)">Extrato público de arrecadação e gastos — sem enrolação, sem letra miúda.</p>
-    </header>
-
-    <!-- ============ RECEIPT CARD ============ -->
-    <main class="receipt relative px-5 sm:px-10 py-10" x-cloak x-show="!erro">
-      <div class="receipt-zig top"></div>
-
-      <!-- Loading -->
-      <template x-if="carregando">
-        <div class="py-16 text-center font-mono text-sm" style="color:var(--ink-faint)">carregando extrato…</div>
-      </template>
-
-      <template x-if="!carregando && dados">
-        <div class="fade-up">
-
-          <!-- Seletor de mês + status -->
-          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
-            <div class="flex items-center gap-2">
-              <label for="mes" class="font-mono text-xs uppercase tracking-wider" style="color:var(--ink-faint)">Referência</label>
-              <select id="mes" x-model="mesSelecionado" @change="carregarMes()"
-                class="month-select font-mono text-sm font-bold border-2 rounded-md pl-3 pr-8 py-1.5 cursor-pointer"
-                style="border-color: var(--line); background-color: var(--paper-alt); color: var(--ink);">
-                <template x-for="m in meses" :key="m.ref">
-                  <option :value="m.ref" x-text="m.label"></option>
-                </template>
-              </select>
-            </div>
-
-            <span class="status-chip"
-              :style="dados.status === 'aberto'
-                ? 'background:var(--green-bg); color:var(--green)'
-                : 'background:var(--paper-alt); color:var(--ink-soft)'"
-              x-text="dados.status === 'aberto' ? '● Mês em aberto' : '✓ Mês fechado'"></span>
-          </div>
-
-          <p class="font-mono text-[11px] mb-6" style="color:var(--ink-faint)">
-            Caixinha sob responsabilidade de <span class="font-bold" style="color:var(--ink-soft)" x-text="dados.responsavel_caixa"></span> · <span x-text="pendentes.length"></span> pendência(s) este mês
-          </p>
-
-          <div class="dashed-rule mb-6"></div>
-
-          <!-- ============ KPIs ============ -->
-          <section class="grid grid-cols-2 gap-x-6 gap-y-5 mb-8">
-            <div>
-              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Arrecadado</p>
-              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--green)" x-text="formatarMoeda(totalArrecadado)"></p>
-            </div>
-            <div>
-              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Gasto</p>
-              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--red)" x-text="formatarMoeda(totalGasto)"></p>
-            </div>
-            <div>
-              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Saldo do mês</p>
-              <p class="font-mono text-2xl font-bold mt-1"
-                :style="saldoMes >= 0 ? 'color:var(--gold-deep)' : 'color:var(--red)'"
-                x-text="formatarMoeda(saldoMes)"></p>
-            </div>
-            <div>
-              <p class="font-mono text-[11px] uppercase tracking-wider" style="color:var(--ink-faint)">Saldo acumulado</p>
-              <p class="font-mono text-2xl font-bold mt-1" style="color:var(--ink)" x-text="formatarMoeda(saldoAcumulado)"></p>
-            </div>
-          </section>
-
-          <div class="dashed-rule mb-8"></div>
-
-          <!-- ============ CONTRIBUINTES ============ -->
-          <section class="mb-10">
-            <div class="flex items-center justify-between mb-4">
-              <h2 class="font-display font-bold text-lg">Contribuintes</h2>
-              <span class="font-mono text-[11px]" style="color:var(--ink-faint)"
-                x-text="dados.contribuintes.filter(c=>c.pago).length + ' / ' + dados.contribuintes.length + ' pagaram'"></span>
-            </div>
-
-            <ul class="space-y-3">
-              <template x-for="c in dados.contribuintes" :key="c.nome">
-                <li class="flex items-center justify-between gap-3">
-                  <div class="flex items-center gap-2 min-w-0">
-                    <span class="font-medium text-sm truncate" x-text="c.nome"></span>
-                  </div>
-                  <div class="leader"></div>
-                  <div class="flex items-center gap-3 shrink-0">
-                    <span class="font-mono text-sm" style="color:var(--ink-soft)"
-                      x-text="formatarMoeda(c.pago ? (c.valor_pago || c.cota_sugerida) : c.cota_sugerida)"></span>
-                    <span class="stamp" :class="c.pago ? 'stamp-pago' : 'stamp-pendente'">
-                      <span x-text="c.pago ? 'Pago' : 'Pendente'"></span>
-                      <span x-show="c.pago">✓</span>
-                      <span x-show="!c.pago">⏳</span>
-                    </span>
-                  </div>
-                </li>
-              </template>
-            </ul>
-          </section>
-
-          <div class="dashed-rule mb-8"></div>
-
-          <!-- ============ GASTOS ============ -->
-          <section class="mb-10">
-            <h2 class="font-display font-bold text-lg mb-4">Gastos &amp; Compras</h2>
-
-            <ul class="space-y-4">
-              <template x-for="g in gastosOrdenados" :key="g.data + g.item">
-                <li>
-                  <div class="flex items-start justify-between gap-3">
-                    <div class="min-w-0">
-                      <div class="flex items-center gap-2">
-                        <span class="cat-dot" :class="catClass(g.categoria)"></span>
-                        <span class="font-medium text-sm truncate" x-text="g.item"></span>
-                      </div>
-                      <p class="font-mono text-[11px] mt-1" style="color:var(--ink-faint)">
-                        <span x-text="formatarData(g.data)"></span> · <span x-text="g.local"></span> · qtd. <span x-text="g.quantidade"></span> · <span x-text="g.responsavel"></span>
-                      </p>
-                    </div>
-                    <span class="font-mono text-sm font-bold shrink-0" style="color:var(--ink)" x-text="formatarMoeda(g.valor_total)"></span>
-                  </div>
-                </li>
-              </template>
-            </ul>
-
-            <template x-if="dados.gastos.length === 0">
-              <p class="text-sm italic" style="color:var(--ink-faint)">Nenhum gasto registrado neste mês ainda.</p>
-            </template>
-          </section>
-
-          <div class="dashed-rule mb-8"></div>
-
-          <!-- ============ GRÁFICO POR CATEGORIA ============ -->
-          <section class="mb-8">
-            <h2 class="font-display font-bold text-lg mb-4">Gastos por categoria</h2>
-            <div class="flex flex-col sm:flex-row items-center gap-6">
-              <div class="w-44 h-44 shrink-0">
-                <canvas x-ref="chartCanvas"></canvas>
-              </div>
-              <ul class="w-full space-y-2">
-                <template x-for="cat in gastosPorCategoria" :key="cat.nome">
-                  <li class="flex items-center justify-between text-sm">
-                    <span class="flex items-center gap-2">
-                      <span class="cat-dot" :class="catClass(cat.nome)"></span>
-                      <span x-text="cat.nome"></span>
-                    </span>
-                    <span class="font-mono font-semibold" x-text="formatarMoeda(cat.total)"></span>
-                  </li>
-                </template>
-              </ul>
-            </div>
-          </section>
-
-          <div class="dashed-rule mb-6"></div>
-
-          <p class="text-center text-xs italic" style="color:var(--ink-faint)">
-            Este extrato não tem valor fiscal — só o valor de manter a cafeteira rodando. ☕
-          </p>
+        <div>
+          <h1>Rateio do Melhor Café do CCEM</h1>
+          <p>Extrato público de arrecadação e gastos da equipe.</p>
         </div>
-      </template>
-
-      <div class="receipt-zig bottom"></div>
-    </main>
-
-    <div class="barcode mt-8 mx-auto max-w-xs"></div>
-    <p class="text-center font-mono text-[10px] mt-3 tracking-widest uppercase" style="color:var(--ink-faint)">
-      dados lidos de /data · sem backend · atualize o json todo mês
-    </p>
-
-    <template x-if="erro">
-      <div class="receipt relative px-6 py-10 text-center">
-        <p class="font-mono text-sm" style="color:var(--red)">Não foi possível carregar os dados (<span x-text="erro"></span>).</p>
-        <p class="text-xs mt-2" style="color:var(--ink-faint)">Se você abriu o arquivo direto no navegador (file://), rode um servidor local — veja o README.</p>
       </div>
-    </template>
 
-  </div>
+      <div class="barra-controles">
+        <div class="campo">
+          <label for="seletor-mes">Mês de referência</label>
 
-<script>
-function rateioApp(){
-  return {
-    meses: [],
-    mesSelecionado: null,
-    dados: null,
-    carregando: true,
-    erro: null,
-    chart: null,
+          <select id="seletor-mes" aria-label="Selecionar mês">
+            <option value="">Carregando meses...</option>
+          </select>
+        </div>
 
-    async init(){
-      try{
-        const idx = await fetch('data/index.json').then(r => {
-          if(!r.ok) throw new Error('data/index.json não encontrado');
-          return r.json();
-        });
-        this.meses = idx.meses;
-        if(this.meses.length === 0) throw new Error('nenhum mês cadastrado em data/index.json');
-        this.mesSelecionado = this.meses[0].ref;
-        await this.carregarMes();
-      }catch(e){
-        this.erro = e.message;
-        this.carregando = false;
+        <button id="botao-atualizar" type="button">
+          Atualizar dados
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="mensagem-erro" class="mensagem erro" role="alert"></div>
+    <div id="mensagem-aviso" class="mensagem aviso" role="status"></div>
+
+    <section id="area-conteudo" aria-live="polite">
+      <p class="carregando">Carregando informações...</p>
+    </section>
+  </main>
+
+  <footer>
+    Centro de Comunicação Estratégica da Marinha -<code>"Mostrando a nossa Força"</code>
+  </footer>
+
+  <script>
+    'use strict';
+
+    const CAMINHOS_INDICE = [
+      'data/index.json',
+      'data/index.txt'
+    ];
+
+    const CAMINHOS_IMAGEM_PADRAO = [
+      'data/caneca-cafe.png',
+      'data/caneca-cafe.jpg',
+      'data/caneca-cafe.jpeg',
+      'data/caneca-cafe.webp',
+      'data/xicara-cafe.png',
+      'data/xicara-cafe.jpg',
+      'data/cafe.png',
+      'data/cafe.jpg'
+    ];
+
+    const estadoAplicacao = {
+      indice: null,
+      dadosMes: null,
+      arquivoAtual: null
+    };
+
+    const elementos = {
+      seletorMes: document.querySelector('#seletor-mes'),
+      botaoAtualizar: document.querySelector('#botao-atualizar'),
+      areaConteudo: document.querySelector('#area-conteudo'),
+      mensagemErro: document.querySelector('#mensagem-erro'),
+      mensagemAviso: document.querySelector('#mensagem-aviso'),
+      imagemCafe: document.querySelector('#imagem-cafe')
+    };
+
+    function converterNumero(valor) {
+      if (valor === null || valor === undefined || valor === '') {
+        return 0;
       }
-    },
 
-    async carregarMes(){
-      this.carregando = true;
-      try{
-        const meta = this.meses.find(m => m.ref === this.mesSelecionado);
-        const dados = await fetch(meta.arquivo).then(r => {
-          if(!r.ok) throw new Error(meta.arquivo + ' não encontrado');
-          return r.json();
-        });
-        this.dados = dados;
-        this.carregando = false;
-        this.$nextTick(() => this.renderChart());
-      }catch(e){
-        this.erro = e.message;
-        this.carregando = false;
-      }
-    },
+      if (typeof valor === 'string') {
+        valor = valor.trim();
 
-    get totalArrecadado(){
-      return this.dados.contribuintes.reduce((soma, c) => soma + (c.pago ? (c.valor_pago ?? c.cota_sugerida) : 0), 0);
-    },
-    get totalGasto(){
-      return this.dados.gastos.reduce((soma, g) => soma + g.valor_total, 0);
-    },
-    get saldoMes(){
-      return this.totalArrecadado - this.totalGasto;
-    },
-    get saldoAcumulado(){
-      return (this.dados.saldo_anterior || 0) + this.saldoMes;
-    },
-    get pendentes(){
-      return this.dados.contribuintes.filter(c => !c.pago);
-    },
-    get gastosOrdenados(){
-      return [...this.dados.gastos].sort((a,b) => new Date(a.data) - new Date(b.data));
-    },
-    get gastosPorCategoria(){
-      const mapa = {};
-      this.dados.gastos.forEach(g => { mapa[g.categoria] = (mapa[g.categoria] || 0) + g.valor_total; });
-      return Object.entries(mapa).map(([nome, total]) => ({ nome, total })).sort((a,b) => b.total - a.total);
-    },
-
-    catClass(categoria){
-      const mapa = {
-        'Café/Açúcar': 'cat-cafe',
-        'Leite/Biscoitos': 'cat-leite',
-        'Utensílios/Descartáveis': 'cat-uten',
-        'Outros': 'cat-outros'
-      };
-      return mapa[categoria] || 'cat-outros';
-    },
-
-    formatarMoeda(v){
-      return (v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    },
-    formatarData(d){
-      const [ano, mes, dia] = d.split('-');
-      return `${dia}/${mes}`;
-    },
-
-    renderChart(){
-      if(this.chart) this.chart.destroy();
-      const cores = { 'Café/Açúcar': '#B4842A', 'Leite/Biscoitos': '#7C8F6B', 'Utensílios/Descartáveis': '#6E8CA0', 'Outros': '#9A8D7B' };
-      const cats = this.gastosPorCategoria;
-      const ctx = this.$refs.chartCanvas.getContext('2d');
-      this.chart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: cats.map(c => c.nome),
-          datasets: [{
-            data: cats.map(c => c.total),
-            backgroundColor: cats.map(c => cores[c.nome] || '#9A8D7B'),
-            borderColor: '#FAF5E9',
-            borderWidth: 3
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: true,
-          cutout: '68%',
-          plugins: { legend: { display: false }, tooltip: { enabled: true } }
+        if (valor === '') {
+          return 0;
         }
+
+        if (valor.includes(',') && !valor.includes('.')) {
+          valor = valor.replace(',', '.');
+        }
+      }
+
+      const numero = Number(valor);
+
+      return Number.isFinite(numero) ? numero : 0;
+    }
+
+    function valorFoiInformado(valor) {
+      return !(
+        valor === null ||
+        valor === undefined ||
+        (typeof valor === 'string' && valor.trim() === '')
+      );
+    }
+
+    function formatarMoeda(valor) {
+      return converterNumero(valor).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
       });
     }
-  };
-}
-</script>
+
+    function escaparHtml(valor) {
+      return String(valor ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function mostrarErro(mensagem) {
+      elementos.mensagemErro.textContent = mensagem;
+      elementos.mensagemErro.classList.add('visivel');
+    }
+
+    function limparErro() {
+      elementos.mensagemErro.textContent = '';
+      elementos.mensagemErro.classList.remove('visivel');
+    }
+
+    function mostrarAviso(mensagem) {
+      elementos.mensagemAviso.textContent = mensagem;
+      elementos.mensagemAviso.classList.add('visivel');
+    }
+
+    function limparAviso() {
+      elementos.mensagemAviso.textContent = '';
+      elementos.mensagemAviso.classList.remove('visivel');
+    }
+
+    async function obterJson(caminho) {
+      const resposta = await fetch(caminho, {
+        cache: 'no-store'
+      });
+
+      if (!resposta.ok) {
+        throw new Error(
+          `Não foi possível carregar ${caminho}. HTTP ${resposta.status}.`
+        );
+      }
+
+      const texto = await resposta.text();
+
+      try {
+        return JSON.parse(texto);
+      } catch {
+        throw new Error(`O arquivo ${caminho} não contém um JSON válido.`);
+      }
+    }
+
+    async function carregarPrimeiroJsonDisponivel(caminhos) {
+      let ultimoErro = null;
+
+      for (const caminho of caminhos) {
+        try {
+          const json = await obterJson(caminho);
+
+          return {
+            json,
+            caminho
+          };
+        } catch (erro) {
+          ultimoErro = erro;
+        }
+      }
+
+      throw ultimoErro || new Error('Nenhum arquivo JSON disponível.');
+    }
+
+    function obterCaminhosDoArquivo(arquivo) {
+      if (!arquivo) {
+        return [];
+      }
+
+      const caminhos = [arquivo];
+
+      if (arquivo.endsWith('.json')) {
+        caminhos.push(arquivo.replace(/\.json$/i, '.txt'));
+      } else if (arquivo.endsWith('.txt')) {
+        caminhos.push(arquivo.replace(/\.txt$/i, '.json'));
+      }
+
+      return [...new Set(caminhos)];
+    }
+
+    function configurarImagemCafe(caminhoPreferencial) {
+      const imagem = elementos.imagemCafe;
+
+      if (!imagem) {
+        return;
+      }
+
+      const caminhos = [
+        caminhoPreferencial,
+        ...CAMINHOS_IMAGEM_PADRAO
+      ].filter(Boolean);
+
+      const caminhosUnicos = [...new Set(caminhos)];
+      let indice = 0;
+
+      function tentarProximoCaminho() {
+        if (indice >= caminhosUnicos.length) {
+          imagem.style.display = 'none';
+          return;
+        }
+
+        imagem.src = caminhosUnicos[indice];
+        indice += 1;
+      }
+
+      imagem.addEventListener('error', tentarProximoCaminho);
+      imagem.addEventListener('load', () => {
+        imagem.style.display = 'block';
+      });
+
+      tentarProximoCaminho();
+    }
+
+    function validarIndice(indice) {
+      return Boolean(
+        indice &&
+        Array.isArray(indice.meses)
+      );
+    }
+
+    function validarDadosMes(dados) {
+      return Boolean(
+        dados &&
+        typeof dados === 'object' &&
+        !Array.isArray(dados)
+      );
+    }
+
+    function preencherSeletorMes(meses) {
+      elementos.seletorMes.innerHTML = '';
+
+      if (!Array.isArray(meses) || meses.length === 0) {
+        elementos.seletorMes.innerHTML =
+          '<option value="">Nenhum mês encontrado</option>';
+        return;
+      }
+
+      meses.forEach((mes, indice) => {
+        const option = document.createElement('option');
+
+        option.value = String(indice);
+        option.textContent =
+          mes.label || mes.ref || `Mês ${indice + 1}`;
+
+        elementos.seletorMes.appendChild(option);
+      });
+
+      elementos.seletorMes.value = '0';
+    }
+
+    function obterValorPago(contribuinte) {
+      /*
+       * Não utilizar:
+       *
+       * contribuinte.valor_pago || contribuinte.cota_sugerida
+       *
+       * porque o valor zero poderia ser tratado como ausência.
+       */
+      if (valorFoiInformado(contribuinte.valor_pago)) {
+        return converterNumero(contribuinte.valor_pago);
+      }
+
+      return 0;
+    }
+
+    function calcularResumo(dados) {
+      const saldoAnterior = converterNumero(dados.saldo_anterior);
+
+      const contribuintes = Array.isArray(dados.contribuintes)
+        ? dados.contribuintes
+        : [];
+
+      const gastos = Array.isArray(dados.gastos)
+        ? dados.gastos
+        : [];
+
+      const totalContribuicoes = contribuintes.reduce(
+        (total, contribuinte) => {
+          if (!contribuinte || contribuinte.pago !== true) {
+            return total;
+          }
+
+          return total + obterValorPago(contribuinte);
+        },
+        0
+      );
+
+      const totalGastos = gastos.reduce(
+        (total, gasto) => {
+          if (!gasto) {
+            return total;
+          }
+
+          return total + converterNumero(gasto.valor_total);
+        },
+        0
+      );
+
+      const saldoAtual =
+        saldoAnterior +
+        totalContribuicoes -
+        totalGastos;
+
+      return {
+        saldoAnterior,
+        totalContribuicoes,
+        totalGastos,
+        saldoAtual
+      };
+    }
+
+    function renderizarResumo(dados, resumo) {
+      const status = dados.status || 'não informado';
+
+      const statusClasse =
+        status.toLowerCase() === 'aberto'
+          ? 'aberto'
+          : 'fechado';
+
+      const responsavel =
+        dados.responsavel_caixa || 'Não informado';
+
+      return `
+        <div class="status">
+          <div>
+            <h2>
+              ${escaparHtml(
+                dados.label ||
+                dados.mes_referencia ||
+                'Extrato'
+              )}
+            </h2>
+
+            <div class="status-info">
+              Responsável pelo caixa:
+              <strong>${escaparHtml(responsavel)}</strong>
+            </div>
+          </div>
+
+          <span class="badge ${statusClasse}">
+            ${escaparHtml(status)}
+          </span>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-titulo">Saldo anterior</div>
+            <div class="card-valor">
+              ${formatarMoeda(resumo.saldoAnterior)}
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-titulo">Contribuições</div>
+            <div class="card-valor">
+              ${formatarMoeda(resumo.totalContribuicoes)}
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-titulo">Gastos</div>
+            <div class="card-valor">
+              ${formatarMoeda(resumo.totalGastos)}
+            </div>
+          </article>
+
+          <article class="card destaque">
+            <div class="card-titulo">Saldo atual</div>
+            <div class="card-valor">
+              ${formatarMoeda(resumo.saldoAtual)}
+            </div>
+          </article>
+        </div>
+      `;
+    }
+
+    function renderizarContribuintes(contribuintes) {
+      if (
+        !Array.isArray(contribuintes) ||
+        contribuintes.length === 0
+      ) {
+        return `
+          <section class="secao">
+            <h3>Contribuintes</h3>
+            <div class="vazio">
+              Nenhum contribuinte cadastrado.
+            </div>
+          </section>
+        `;
+      }
+
+      const linhas = contribuintes.map((contribuinte) => {
+        const pago = contribuinte.pago === true;
+        const valorPago = obterValorPago(contribuinte);
+        const cotaSugerida =
+          converterNumero(contribuinte.cota_sugerida);
+
+        return `
+          <tr>
+            <td>
+              ${escaparHtml(
+                contribuinte.nome || 'Não informado'
+              )}
+            </td>
+
+            <td class="valor">
+              ${formatarMoeda(cotaSugerida)}
+            </td>
+
+            <td class="valor">
+              ${formatarMoeda(valorPago)}
+            </td>
+
+            <td>
+              <span class="estado ${pago ? 'pago' : 'pendente'}">
+                ${pago ? 'Pago' : 'Pendente'}
+              </span>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      return `
+        <section class="secao">
+          <h3>Contribuintes</h3>
+
+          <div class="tabela-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th class="valor">Cota sugerida</th>
+                  <th class="valor">Valor pago</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${linhas}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderizarGastos(gastos) {
+      if (
+        !Array.isArray(gastos) ||
+        gastos.length === 0
+      ) {
+        return `
+          <section class="secao">
+            <h3>Gastos</h3>
+            <div class="vazio">
+              Nenhum gasto cadastrado.
+            </div>
+          </section>
+        `;
+      }
+
+      const linhas = gastos.map((gasto) => {
+        return `
+          <tr>
+            <td>${escaparHtml(gasto.data || 'Não informado')}</td>
+            <td>${escaparHtml(gasto.item || 'Não informado')}</td>
+            <td>${escaparHtml(gasto.local || 'Não informado')}</td>
+            <td class="valor">
+              ${formatarMoeda(gasto.valor_total)}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      return `
+        <section class="secao">
+          <h3>Gastos</h3>
+
+          <div class="tabela-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Item</th>
+                  <th>Local</th>
+                  <th class="valor">Valor</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${linhas}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderizarPagina(dados) {
+      const resumo = calcularResumo(dados);
+
+      elementos.areaConteudo.innerHTML = `
+        ${renderizarResumo(dados, resumo)}
+
+        <div class="grid-conteudo">
+          ${renderizarContribuintes(dados.contribuintes)}
+          ${renderizarGastos(dados.gastos)}
+        </div>
+      `;
+
+      configurarImagemCafe(
+        dados.imagem_cabecalho || 'data/caneca-cafe.png'
+      );
+    }
+
+    async function carregarIndice() {
+      limparErro();
+      limparAviso();
+
+      try {
+        const resultado =
+          await carregarPrimeiroJsonDisponivel(CAMINHOS_INDICE);
+
+        if (!validarIndice(resultado.json)) {
+          throw new Error(
+            'O índice deve conter uma propriedade "meses" com uma lista.'
+          );
+        }
+
+        estadoAplicacao.indice = resultado.json;
+
+        preencherSeletorMes(resultado.json.meses);
+
+        if (resultado.caminho.endsWith('.txt')) {
+          mostrarAviso(
+            'O índice ainda está com extensão .txt. ' +
+            'Renomeie-o para index.json.'
+          );
+        }
+
+        await carregarMesSelecionado();
+      } catch (erro) {
+        elementos.areaConteudo.innerHTML = '';
+
+        mostrarErro(
+          `Não foi possível carregar o índice mensal: ${erro.message}`
+        );
+      }
+    }
+
+    async function carregarMesSelecionado() {
+      limparErro();
+
+      const indice = estadoAplicacao.indice;
+      const indiceSelecionado =
+        Number(elementos.seletorMes.value);
+
+      if (
+        !indice ||
+        !Array.isArray(indice.meses) ||
+        !indice.meses[indiceSelecionado]
+      ) {
+        mostrarErro('Nenhum mês válido foi selecionado.');
+        return;
+      }
+
+      const mes = indice.meses[indiceSelecionado];
+      const caminhos = obterCaminhosDoArquivo(mes.arquivo);
+
+      if (caminhos.length === 0) {
+        mostrarErro(
+          'O mês selecionado não possui arquivo configurado.'
+        );
+        return;
+      }
+
+      elementos.areaConteudo.innerHTML =
+        '<p class="carregando">Carregando informações...</p>';
+
+      try {
+        const resultado =
+          await carregarPrimeiroJsonDisponivel(caminhos);
+
+        if (!validarDadosMes(resultado.json)) {
+          throw new Error(
+            'O arquivo mensal não contém um objeto JSON válido.'
+          );
+        }
+
+        estadoAplicacao.dadosMes = resultado.json;
+        estadoAplicacao.arquivoAtual = resultado.caminho;
+
+        if (resultado.caminho.endsWith('.txt')) {
+          mostrarAviso(
+            'O arquivo mensal ainda está com extensão .txt. ' +
+            'Renomeie-o para .json.'
+          );
+        } else {
+          limparAviso();
+        }
+
+        renderizarPagina(resultado.json);
+      } catch (erro) {
+        elementos.areaConteudo.innerHTML = '';
+
+        mostrarErro(
+          `Não foi possível carregar os dados do mês: ${erro.message}`
+        );
+      }
+    }
+
+    elementos.seletorMes.addEventListener(
+      'change',
+      carregarMesSelecionado
+    );
+
+    elementos.botaoAtualizar.addEventListener(
+      'click',
+      carregarIndice
+    );
+
+    configurarImagemCafe();
+    carregarIndice();
+  </script>
 </body>
 </html>
