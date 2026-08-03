@@ -3,6 +3,42 @@
   "label": "Agosto/2026",
   "status": "aberto",
   "responsavel_caixa": "SG FREIRE",
+  "saldo_anterior": 0,
+
+  "contribuintes": [
+    {
+      "nome": "SG FREIRE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    }
+  ],
+
+  "contribuintes_itens": [
+    {
+      "nome": "SG FREIRE",
+      "item": "---",
+      "data": "2026-08-01"
+    }   
+  ],
+
+  "gastos": [
+    {
+      "data": "2026-08-03",
+      "categoria": "Café",
+      "item": "CAFÉ MELITA 500g",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 28.90,
+      "responsavel": "WALLACE FREIRE"
+    }
+  ]
+}{
+  "mes_referencia": "2026-08",
+  "label": "Agosto/2026",
+  "status": "aberto",
+  "responsavel_caixa": "SG FREIRE",
   "saldo_anterior": 0.00,
   "contribuintes": [
         { "nome": "SG FREIRE",   "cota_sugerida": 30.00, "pago": true,  "valor_pago": 30.00, "data_pagamento": "2026-08-03" }
