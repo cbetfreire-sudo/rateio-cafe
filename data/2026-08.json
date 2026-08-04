@@ -6,7 +6,42 @@
   "saldo_anterior": 0,
 
   "contribuintes": [
-     {
+    {
+      "nome": "SO CUSTODIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 50.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
+      "nome": "SO EDMILSON",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
+      "nome": "VIVIANE SANTANA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
+      "nome": "CMG ROGERIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
+      "nome": "2ºT Sarah",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    }, 
+    {
       "nome": "1ºSG-FN IBRAHIM",
       "cota_sugerida": 30.00,
       "pago": true,
@@ -67,8 +102,44 @@
 
   "gastos": [
     {
-      "data": "2026-08-03",
+      "data": "2026-08-04",
       "categoria": "Café",
+      "item": "CAFÉ MELITA 500g",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 3,
+      "valor_total": 83.70,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-04",
+      "categoria": "Utencilios",
+      "item": "ROSQUINHA RANCHEIRO 600G",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 6.49,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-04",
+      "categoria": "Utencilios",
+      "item": "FILTO REUTILIZÁVEL 103",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 5.69,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-04",
+      "categoria": "Utencilios",
+      "item": "SACOLA",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 0.30,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-03",
+      "categoria": "Utencilios",
       "item": "CAFÉ MELITA 500g",
       "local": "ASSAI ATACADISTA",
       "quantidade": 1,
