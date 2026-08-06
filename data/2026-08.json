@@ -109,6 +109,33 @@
 
   "gastos": [
     {
+      "data": "2026-08-06",
+      "categoria": "Utencilios",
+      "item": "SACOLA VERDE",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 0.30,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-06",
+      "categoria": "Utencilios",
+      "item": "BISCOITO GOTAS CHOC. 335G 1UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 8.99,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-06",
+      "categoria": "Utencilios",
+      "item": "ROSQUINHA RANCHEIRO 600G 3UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 3,
+      "valor_total": 14.97,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
       "data": "2026-08-04",
       "categoria": "Café",
       "item": "CAFÉ MELITA 500g 3UN",
@@ -138,7 +165,7 @@
     {
       "data": "2026-08-04",
       "categoria": "Utencilios",
-      "item": "SACOLA",
+      "item": "SACOLA VERDE",
       "local": "ASSAI ATACADISTA",
       "quantidade": 1,
       "valor_total": 0.30,
