@@ -899,81 +899,68 @@
     }
 
     function renderizarContribuintes(contribuintes) {
-      if (
-        !Array.isArray(contribuintes) ||
-        contribuintes.length === 0
-      ) {
-        return `
-          <section class="secao">
-            <h3>Contribuintes financeiros</h3>
+  if (
+    !Array.isArray(contribuintes) ||
+    contribuintes.length === 0
+  ) {
+    return `
+      <section class="secao">
+        <h3>Contribuintes financeiros</h3>
 
-            <div class="vazio">
-              Nenhum contribuinte cadastrado.
-            </div>
-          </section>
-        `;
-      }
+        <div class="vazio">
+          Nenhum contribuinte cadastrado.
+        </div>
+      </section>
+    `;
+  }
 
-      const linhas = contribuintes.map((contribuinte) => {
-        const pago = contribuinte.pago === true;
+  const linhas = contribuintes.map((contribuinte) => {
+    const pago = contribuinte.pago === true;
+    const valorPago = obterValorPago(contribuinte);
 
-        const valorPago = obterValorPago(
-          contribuinte
-        );
+    return `
+      <tr>
+        <td>
+          ${escaparHtml(
+            contribuinte.nome || 'Não informado'
+          )}
+        </td>
 
-        const cotaSugerida = converterNumero(
-          contribuinte.cota_sugerida
-        );
+        <td class="valor">
+          ${formatarMoeda(valorPago)}
+        </td>
 
-        return `
-          <tr>
-            <td>
-              ${escaparHtml(
-                contribuinte.nome ||
-                'Não informado'
-              )}
-            </td>
+        <td>
+          <span class="estado ${pago ? 'pago' : 'pendente'}">
+            ${pago ? 'Pago' : 'Pendente'}
+          </span>
+        </td>
+      </tr>
+    `;
+  }).join('');
 
-           <td class="valor">
-              ${formatarMoeda(cotaSugerida)}
-            </td>
+  return `
+    <section class="secao">
+      <h3>Contribuintes financeiros</h3>
 
-            <td class="valor">
-              ${formatarMoeda(valorPago)}
-            </td>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th class="valor">Valor pago</th>
+              <th>Status</th>
+            </tr>
+          </thead>
 
-            <td>
-              <span class="estado ${pago ? 'pago' : 'pendente'}">
-                ${pago ? 'Pago' : 'Pendente'}
-              </span>
-            </td>
-          </tr>
-        `;
-      }).join('');
-
-      return `
-        <section class="secao">
-          <h3>Contribuintes financeiros</h3>
-
-          <div class="tabela-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th class="valor">Cota sugerida</th>
-                  <th class="valor">Valor pago</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                ${linhas}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      `;
-    }
+          <tbody>
+            ${linhas}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
 
     function renderizarContribuintesItens(dados) {
       const registros = obterListaContribuintesItens(
