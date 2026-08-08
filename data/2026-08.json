@@ -21,6 +21,13 @@
       "data_pagamento": "2026-08-03"
     },
     {
+      "nome": "CB DAVI GUARANA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
       "nome": "TEN IAN",
       "cota_sugerida": 30.00,
       "pago": true,
