@@ -121,7 +121,7 @@
     {
       "nome": "SG FREIRE",
       "cota_sugerida": 30.00,
-      "pago": true,
+      "pago": false,
       "valor_pago": 30.00,
       "data_pagamento": "2026-08-03"
     }
