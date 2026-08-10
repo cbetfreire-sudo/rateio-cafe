@@ -151,6 +151,42 @@
 
   "gastos": [
     {
+      "data": "2026-08-10",
+      "categoria": "Utencilios",
+      "item": "CAFÉ MELITA 500g 3UN",
+      "local": "AMAZON",
+      "quantidade": 3,
+      "valor_total": 85.77,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-10",
+      "categoria": "Utencilios",
+      "item": "CAFÉ MELITA 500g 6UN",
+      "local": "AMAZON",
+      "quantidade": 6,
+      "valor_total": 155.28,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-10",
+      "categoria": "Utencilios",
+      "item": "CACAU EM PÓ 100%",
+      "local": "AMAZON",
+      "quantidade": 1,
+      "valor_total": 17.98,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-10",
+      "categoria": "Utencilios",
+      "item": "FILTRO DE PAPEL 3UN",
+      "local": "AMAZON",
+      "quantidade": 3,
+      "valor_total": 11.97,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
       "data": "2026-08-06",
       "categoria": "Utencilios",
       "item": "SACOLA",
