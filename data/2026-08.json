@@ -7,6 +7,20 @@
 
   "contribuintes": [
     {
+      "nome": "CT ANDERS",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
+      "nome": "SG MUCIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-08-03"
+    },
+    {
       "nome": "CC MIRANDA",
       "cota_sugerida": 30.00,
       "pago": true,
@@ -129,9 +143,9 @@
 
   "contribuintes_itens": [
     {
-      "nome": "SG FREIRE",
-      "item": "---",
-      "data": "2026-08-01"
+      "nome": "SO CUNHA",
+      "item": "BOLO",
+      "data": "2026-08-10"
     }   
   ],
 
