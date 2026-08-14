@@ -151,6 +151,51 @@
 
   "gastos": [
     {
+      "data": "2026-08-13",
+      "categoria": "Utencilios",
+      "item": "BALA BUTT MARAC 400G 1UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 16.90,
+      "responsavel": "WALLACE FREIRE"
+    }, 
+    {
+      "data": "2026-08-13",
+      "categoria": "Utencilios",
+      "item": "SEQUILHO 7 BOYS 400G 1UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 11.85,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-13",
+      "categoria": "Utencilios",
+      "item": "BISCOITO CHOC. 335G 1UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 8.99,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-13",
+      "categoria": "Utencilios",
+      "item": "ROSQUINHA RANCHEIRO 600G 3UN",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 3,
+      "valor_total": 19.47,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-08-13",
+      "categoria": "Utencilios",
+      "item": "SACOLA",
+      "local": "ASSAI ATACADISTA",
+      "quantidade": 1,
+      "valor_total": 0.30,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
       "data": "2026-08-10",
       "categoria": "Utencilios",
       "item": "CAFÉ MELITA 500g 3UN",
