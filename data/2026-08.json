@@ -146,7 +146,22 @@
       "nome": "SO CUNHA",
       "item": "BOLO",
       "data": "2026-08-10"
-    }   
+    },
+    {
+      "nome": "CT DANIELA",
+      "item": "CAFÉ 500g",
+      "data": "2026-08-10"
+    },
+    {
+      "nome": "SG CASTRO",
+      "item": "CAFÉ 250G GOURMET",
+      "data": "2026-08-24"
+    },
+    {
+      "nome": "SG CASTRO",
+      "item": "ROSQUINHA RANCHEIRO 600G",
+      "data": "2026-08-24"
+    }
   ],
 
   "gastos": [
