@@ -1,0 +1,66 @@
+{
+  "mes_referencia": "2026-09",
+  "label": "Setembro/2026",
+  "status": "aberto",
+  "responsavel_caixa": "SG FREIRE",
+  "saldo_anterior": 0,
+
+  "contribuintes": [
+    {
+      "nome": "VIVIANE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": "SG IBRAHIM",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": "TEN SARAH",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": " CT DANIELA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    
+    {
+      "nome": "SG FREIRE",
+      "cota_sugerida": 30.00,
+      "pago": false,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    }
+  ],
+
+  "contribuintes_itens": [
+    {
+      "nome": "---",
+      "item": "---",
+      "data": "2026-09-01"
+    }
+  ],
+
+  "gastos": [
+    {
+      "data": "2026-09-01",
+      "categoria": "Utencilios",
+      "item": "----",
+      "local": "---",
+      "quantidade": 1,
+      "valor_total": 0.01,
+      "responsavel": "WALLACE FREIRE"
+    }
+  ]
+}
