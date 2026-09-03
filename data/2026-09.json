@@ -111,36 +111,36 @@
   "gastos": [
     {
       "data": "2026-09-02",
-      "categoria": "FILTRO DE PAPEL Nº 103 - 3UN",
-      "item": "----",
-      "local": "---",
+      "categoria": "UTENSÍLIO",
+      "item": "FILTRO DE PAPEL Nº 103 - 3UN",
+      "local": "ASSAI ATACADO",
       "quantidade": 1,
       "valor_total": 14.70,
       "responsavel": "WALLACE FREIRE"
     },
     {
       "data": "2026-09-02",
-      "categoria": "BALA BUTT 400G MENTA/CHOC - 1UN",
-      "item": "----",
-      "local": "---",
+      "categoria": "COMIDA",
+      "item": "BALA BUTT 400G MENTA/CHOC - 1UN",
+      "local": "ASSAI ATACADO",
       "quantidade": 1,
       "valor_total": 21.25,
       "responsavel": "WALLACE FREIRE"
     },
     {
       "data": "2026-09-02",
-      "categoria": "BARRA WHEY CHOC. 41G - 17UN",
-      "item": "----",
-      "local": "---",
+      "categoria": "COMIDA",
+      "item": "BARRA WHEY CHOC. 41G - 17UN",
+      "local": "ASSAI ATACADO",
       "quantidade": 1,
       "valor_total": 116.45,
       "responsavel": "WALLACE FREIRE"
     },
      {
       "data": "2026-09-02",
-      "categoria": "CANELA EM PÓ 100G",
-      "item": "----",
-      "local": "---",
+      "categoria": "COMIDA",
+      "item": "CANELA EM PÓ 100G",
+      "local": "ASSAI ATACADO",
       "quantidade": 1,
       "valor_total": 20.19,
       "responsavel": "WALLACE FREIRE"
