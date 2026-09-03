@@ -7,7 +7,63 @@
 
   "contribuintes": [
     {
-      "nome": "VIVIANE",
+      "nome": "SO CUSTODIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "CT ANDERS",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "SG RENATA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "SO SOUZA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "SO DURCILENE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-02"
+    },
+    {
+      "nome": "CT VANESSA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-02"
+    },
+    {
+      "nome": "SC MARCELA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-02"
+    },
+    {
+      "nome": "SO EDMILSON",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": "SC VIVIANE",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
@@ -54,12 +110,39 @@
 
   "gastos": [
     {
-      "data": "2026-09-01",
-      "categoria": "Utencilios",
+      "data": "2026-09-02",
+      "categoria": "FILTRO DE PAPEL Nº 103 - 3UN",
       "item": "----",
       "local": "---",
       "quantidade": 1,
-      "valor_total": 0.01,
+      "valor_total": 14.70,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-02",
+      "categoria": "BALA BUTT 400G MENTA/CHOC - 1UN",
+      "item": "----",
+      "local": "---",
+      "quantidade": 1,
+      "valor_total": 21.25,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-02",
+      "categoria": "BARRA WHEY CHOC. 41G - 17UN",
+      "item": "----",
+      "local": "---",
+      "quantidade": 1,
+      "valor_total": 116.45,
+      "responsavel": "WALLACE FREIRE"
+    },
+     {
+      "data": "2026-09-02",
+      "categoria": "CANELA EM PÓ 100G",
+      "item": "----",
+      "local": "---",
+      "quantidade": 1,
+      "valor_total": 20.19,
       "responsavel": "WALLACE FREIRE"
     }
   ]
