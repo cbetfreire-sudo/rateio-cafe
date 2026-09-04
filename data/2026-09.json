@@ -7,6 +7,13 @@
 
   "contribuintes": [
     {
+      "nome": "SO CUNHA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
       "nome": "SO GAMA",
       "cota_sugerida": 30.00,
       "pago": true,
