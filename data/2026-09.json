@@ -151,6 +151,69 @@
   ],
 
   "gastos": [
+     {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "CAFE MELIT TRAD 500G - 10UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 239.00,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "ROSQ MABEL 600G LEITE - 5UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 34.95,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "ROSQ MABEL 600G COCO - 3UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 20.97,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "BALA SWEET 500G SORT - 1UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 10.49,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "BISC BOUD 335G CHOC - 3UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 23.97,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "SEQUILHO S BOYS - 2UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 16.58,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-09-08",
+      "categoria": "COMIDA",
+      "item": "BALA BUTT 400G MARAC - 1UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 18.90,
+      "responsavel": "WALLACE FREIRE"
+    },
     {
       "data": "2026-09-02",
       "categoria": "UTENSÍLIO",
