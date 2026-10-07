@@ -89,11 +89,20 @@
   "gastos": [
     {
       "data": "2026-10-01",
-      "categoria": "A",
-      "item": "A",
+      "categoria": "COMIDA",
+      "item": "AAA",
       "local": "ASSAI ATACADO",
       "quantidade": 1,
-      "valor_total": 01.00,
+      "valor_total": 1.00,
+      "responsavel": "WALLACE FREIRE"
+    },
+     {
+      "data": "2026-10-01",
+      "categoria": "COMIDA",
+      "item": "BBB",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 1.00,
       "responsavel": "WALLACE FREIRE"
     }
   ]
