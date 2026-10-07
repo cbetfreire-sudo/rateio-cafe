@@ -1,0 +1,100 @@
+{
+  "mes_referencia": "2026-10",
+  "label": "Outubro/2026",
+  "status": "aberto",
+  "responsavel_caixa": "SG FREIRE",
+  "saldo_anterior": 89.70,
+
+  "contribuintes": [
+    {
+      "nome": "SO GAMA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },    
+    {
+      "nome": "SG RAUL 2/4",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "TEN MARIA LETICIA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },
+    {
+      "nome": "CMG ROGERIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 35.00,
+      "data_pagamento": "2026-09-03"
+    },    
+    {
+      "nome": "CT ANDERS",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-03"
+    },    
+    {
+      "nome": "SC MARCELA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-02"
+    },
+    {
+      "nome": "SO EDMILSON",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": "SC VIVIANE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },
+    {
+      "nome": "SG IBRAHIM",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    },    
+    {
+      "nome": "SG FREIRE",
+      "cota_sugerida": 30.00,
+      "pago": false,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-09-01"
+    }
+  ],
+
+  "contribuintes_itens": [
+    {
+      "nome": "---",
+      "item": "---",
+      "data": "2026-09-01"
+    }
+  ],
+
+  "gastos": [
+    {
+      "data": "2026-10-01",
+      "categoria": "---",
+      "item": "---",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 00.01,
+      "responsavel": "WALLACE FREIRE"
+    }
+  ]
+}
