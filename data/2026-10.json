@@ -93,7 +93,7 @@
       "item": "AAA",
       "local": "ASSAI ATACADO",
       "quantidade": 1,
-      "valor_total": 1.00,
+      "valor_total": 0.01,
       "responsavel": "WALLACE FREIRE"
     },
      {
@@ -102,7 +102,7 @@
       "item": "BBB",
       "local": "ASSAI ATACADO",
       "quantidade": 1,
-      "valor_total": 1.00,
+      "valor_total": 0.01,
       "responsavel": "WALLACE FREIRE"
     }
   ]
