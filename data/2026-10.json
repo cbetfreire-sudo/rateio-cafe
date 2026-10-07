@@ -11,70 +11,70 @@
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-03"
+      "data_pagamento": "2026-10-06"
     },    
     {
       "nome": "SG RAUL 2/4",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-03"
+      "data_pagamento": "2026-10-01"
     },
     {
       "nome": "TEN MARIA LETICIA",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-03"
+      "data_pagamento": "2026-10-06"
     },
     {
       "nome": "CMG ROGERIO",
       "cota_sugerida": 30.00,
       "pago": true,
-      "valor_pago": 35.00,
-      "data_pagamento": "2026-09-03"
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-06"
     },    
     {
       "nome": "CT ANDERS",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-03"
+      "data_pagamento": "2026-10-06"
     },    
     {
       "nome": "SC MARCELA",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-02"
+      "data_pagamento": "2026-10-05"
     },
     {
       "nome": "SO EDMILSON",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-01"
+      "data_pagamento": "2026-10-05"
     },
     {
       "nome": "SC VIVIANE",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-01"
+      "data_pagamento": "2026-10-05"
     },
     {
       "nome": "SG IBRAHIM",
       "cota_sugerida": 30.00,
       "pago": true,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-01"
+      "data_pagamento": "2026-10-06"
     },    
     {
       "nome": "SG FREIRE",
       "cota_sugerida": 30.00,
       "pago": false,
       "valor_pago": 30.00,
-      "data_pagamento": "2026-09-01"
+      "data_pagamento": "2026-10-01"
     }
   ],
 
@@ -89,8 +89,8 @@
   "gastos": [
     {
       "data": "2026-10-01",
-      "categoria": "---",
-      "item": "---",
+      "categoria": "A",
+      "item": "A",
       "local": "ASSAI ATACADO",
       "quantidade": 1,
       "valor_total": 00.01,
