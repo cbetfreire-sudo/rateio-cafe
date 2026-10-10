@@ -102,12 +102,12 @@
 
   "gastos": [
     {
-      "data": "2026-10-01",
+      "data": "2026-10-10",
       "categoria": "COMIDA",
-      "item": "AAA",
-      "local": "ASSAI ATACADO",
+      "item": "CAFÉ MELLITA FAZENDA 10UN",
+      "local": "AMAZON",
       "quantidade": 1,
-      "valor_total": 0.01,
+      "valor_total": 244.90,
       "responsavel": "WALLACE FREIRE"
     },
      {
