@@ -110,13 +110,31 @@
       "valor_total": 244.90,
       "responsavel": "WALLACE FREIRE"
     },
-     {
-      "data": "2026-10-01",
+    {
+      "data": "2026-10-13",
       "categoria": "COMIDA",
-      "item": "BBB",
+      "item": "BISCOITO BAUD 335G 3UN CHOC",
       "local": "ASSAI ATACADO",
       "quantidade": 1,
-      "valor_total": 0.01,
+      "valor_total": 29.37,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-10-13",
+      "categoria": "COMIDA",
+      "item": "ROSQUINHA MABEL 600G 10UN COCO",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 49.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+     {
+      "data": "2026-10-13",
+      "categoria": "COMIDA",
+      "item": "SEQUILHO 7 BOYS 400G 2UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 23.70,
       "responsavel": "WALLACE FREIRE"
     }
   ]
