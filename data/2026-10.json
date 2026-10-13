@@ -7,6 +7,27 @@
 
   "contribuintes": [
     {
+      "nome": "TEN SARAH",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-13"
+    },
+    {
+      "nome": "CC MIRANDA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 40.00,
+      "data_pagamento": "2026-10-13"
+    },
+    {
+      "nome": "SO CUSTODIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-13"
+    },
+    {
       "nome": "SO GAMA",
       "cota_sugerida": 30.00,
       "pago": true,
@@ -28,11 +49,11 @@
       "data_pagamento": "2026-10-06"
     },
     {
-      "nome": "CMG ROGERIO",
+      "nome": "CMG ROGERIO 1/2",
       "cota_sugerida": 30.00,
       "pago": true,
-      "valor_pago": 30.00,
-      "data_pagamento": "2026-10-06"
+      "valor_pago": 60.00,
+      "data_pagamento": "2026-10-13"
     },    
     {
       "nome": "CT ANDERS",
