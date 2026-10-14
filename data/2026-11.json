@@ -1,0 +1,88 @@
+{
+  "mes_referencia": "2026-11",
+  "label": "Novembro/2026",
+  "status": "aberto",
+  "responsavel_caixa": "SG FREIRE",
+  "saldo_anterior": 00.03,
+
+  "contribuintes": [
+    {
+      "nome": "CT RAFAELA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-14"
+    },
+    {
+      "nome": "TEN SARAH",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-13"
+    },
+    {
+      "nome": "CC MIRANDA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 40.00,
+      "data_pagamento": "2026-10-13"
+    },
+    {
+      "nome": "SO CUSTODIO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-13"
+    },      
+    {
+      "nome": "SG RAUL 3/4",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-01"
+    },    
+    {
+      "nome": "CMG ROGERIO 2/2",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-01"
+    },        
+    {
+      "nome": "SG FREIRE",
+      "cota_sugerida": 30.00,
+      "pago": false,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-10-01"
+    }
+  ],
+
+  "contribuintes_itens": [
+    {
+      "nome": "---",
+      "item": "---",
+      "data": "2026-11-01"
+    }
+  ],
+
+  "gastos": [
+    {
+      "data": "2026-11-01",
+      "categoria": "COMIDA",
+      "item": "CAFÉ MELLITA FAZENDA 10UN",
+      "local": "AMAZON",
+      "quantidade": 1,
+      "valor_total": 00.01,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-01",
+      "categoria": "COMIDA",
+      "item": "CAFÉ MELLITA FAZENDA 10UN",
+      "local": "AMAZON",
+      "quantidade": 1,
+      "valor_total": 00.01,
+      "responsavel": "WALLACE FREIRE"
+    }
+  ]
+}
