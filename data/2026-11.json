@@ -3,7 +3,7 @@
   "label": "Novembro/2026",
   "status": "aberto",
   "responsavel_caixa": "SG FREIRE",
-  "saldo_anterior": 00.03,
+  "saldo_anterior": 00.10,
 
   "contribuintes": [
     {
@@ -72,7 +72,7 @@
       "item": "CAFÉ MELLITA FAZENDA 10UN",
       "local": "AMAZON",
       "quantidade": 1,
-      "valor_total": 00.01,
+      "valor_total": 00.10,
       "responsavel": "WALLACE FREIRE"
     },
     {
@@ -81,7 +81,7 @@
       "item": "CAFÉ MELLITA FAZENDA 10UN",
       "local": "AMAZON",
       "quantidade": 1,
-      "valor_total": 00.01,
+      "valor_total": 00.10,
       "responsavel": "WALLACE FREIRE"
     }
   ]
