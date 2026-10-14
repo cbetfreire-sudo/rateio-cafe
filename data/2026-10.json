@@ -5,35 +5,7 @@
   "responsavel_caixa": "SG FREIRE",
   "saldo_anterior": 89.70,
 
-  "contribuintes": [
-    {
-      "nome": "CT RAFAELA",
-      "cota_sugerida": 30.00,
-      "pago": true,
-      "valor_pago": 30.00,
-      "data_pagamento": "2026-10-14"
-    },
-    {
-      "nome": "TEN SARAH",
-      "cota_sugerida": 30.00,
-      "pago": true,
-      "valor_pago": 30.00,
-      "data_pagamento": "2026-10-13"
-    },
-    {
-      "nome": "CC MIRANDA",
-      "cota_sugerida": 30.00,
-      "pago": true,
-      "valor_pago": 40.00,
-      "data_pagamento": "2026-10-13"
-    },
-    {
-      "nome": "SO CUSTODIO",
-      "cota_sugerida": 30.00,
-      "pago": true,
-      "valor_pago": 30.00,
-      "data_pagamento": "2026-10-13"
-    },
+  "contribuintes": [    
     {
       "nome": "SO GAMA",
       "cota_sugerida": 30.00,
