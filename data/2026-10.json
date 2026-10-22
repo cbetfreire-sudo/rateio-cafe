@@ -136,6 +136,33 @@
       "quantidade": 1,
       "valor_total": 23.70,
       "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-10-20",
+      "categoria": "COMIDA",
+      "item": "ADOÇANTE LINEA STEV 60ML",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 12.99,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-10-20",
+      "categoria": "COMIDA",
+      "item": "FILTRO BRIGITTA N103 4UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 19.60,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-10-20",
+      "categoria": "COMIDA",
+      "item": "CANELA EM PÓ 50G 2UN",
+      "local": "ASSAI ATACADO",
+      "quantidade": 1,
+      "valor_total": 15.98,
+      "responsavel": "WALLACE FREIRE"
     }
   ]
 }
