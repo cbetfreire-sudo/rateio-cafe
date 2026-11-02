@@ -68,20 +68,38 @@
   "gastos": [
     {
       "data": "2026-11-01",
-      "categoria": "COMIDA",
-      "item": "CAFÉ MELLITA FAZENDA 10UN",
-      "local": "AMAZON",
+      "categoria": "UTENCILIO",
+      "item": "Garrafa Térmica Invicta Air Pot Slim",
+      "local": "MERCADO LIVRE",
       "quantidade": 1,
-      "valor_total": 0.00,
+      "valor_total": 86.89,
       "responsavel": "WALLACE FREIRE"
     },
     {
       "data": "2026-11-01",
       "categoria": "COMIDA",
-      "item": "CAFÉ MELLITA FAZENDA 10UN",
+      "item": "Caixa Organizadora Porta Chá",
+      "local": "MERCADO LIVRE",
+      "quantidade": 1,
+      "valor_total": 28.98,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-01",
+      "categoria": "COMIDA",
+      "item": "CHÁ OETKER 10G 3UN",
       "local": "AMAZON",
       "quantidade": 1,
-      "valor_total": 0.00,
+      "valor_total": 16.35,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-01",
+      "categoria": "COMIDA",
+      "item": "CHÁ OETKER 15G 3UN",
+      "local": "AMAZON",
+      "quantidade": 1,
+      "valor_total": 26.97,
       "responsavel": "WALLACE FREIRE"
     }
   ]
