@@ -7,6 +7,76 @@
 
   "contribuintes": [
     {
+      "nome": "CC MIRANDA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-05"
+    },
+    {
+      "nome": "WILLIAN DE ARAUJO CORREIA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-05"
+    },
+    {
+      "nome": "SC VIVIANE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-05"
+    },
+    {
+      "nome": "SG IBRAHIM",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "CT VANESSA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "SC MARCELA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "SG RONNIE",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "CT ANDERS",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "SO EDMILSO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-04"
+    },
+    {
+      "nome": "SO SOUZA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-03"
+    },
+    {
       "nome": "CT RAFAELA",
       "cota_sugerida": 30.00,
       "pago": true,
@@ -67,6 +137,15 @@
 
   "gastos": [
     {
+      "data": "2026-11-06",
+      "categoria": "COMIDA",
+      "item": "BALA PISTACHE",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 18.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
       "data": "2026-11-01",
       "categoria": "UTENCILIO",
       "item": "Garrafa Térmica Invicta Air Pot Slim",
@@ -77,7 +156,7 @@
     },
     {
       "data": "2026-11-01",
-      "categoria": "COMIDA",
+      "categoria": "UTENCILIO",
       "item": "Caixa Organizadora Porta Chá",
       "local": "MERCADO LIVRE",
       "quantidade": 1,
