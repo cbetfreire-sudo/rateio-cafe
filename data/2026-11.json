@@ -137,6 +137,15 @@
 
   "gastos": [
     {
+      "data": "2026-11-07",
+      "categoria": "COMIDA",
+      "item": "Cappuccino Instantâneo Café Do Centro",
+      "local": "MERCADO LIVRE",
+      "quantidade": 1,
+      "valor_total": 59.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
       "data": "2026-11-06",
       "categoria": "COMIDA",
       "item": "BALA PISTACHE",
