@@ -7,6 +7,27 @@
 
   "contribuintes": [
     {
+      "nome": "CT DANIELA MEIRELES",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-10"
+    },
+    {
+      "nome": "TEN SARAH",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-10"
+    },
+    {
+      "nome": "SO CUNHA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-09"
+    },
+    {
       "nome": "CC MIRANDA",
       "cota_sugerida": 30.00,
       "pago": true,
@@ -129,13 +150,76 @@
 
   "contribuintes_itens": [
     {
-      "nome": "---",
-      "item": "---",
-      "data": "2026-11-01"
+      "nome": "SG CASTRO",
+      "item": "ROSQUINHA",
+      "data": "2026-11-13"
     }
   ],
 
   "gastos": [
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "MEL SOL 450G SILV",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 27.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "BALA BUTTER BAUD 335G",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 18.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "BISCOITO M JUC AMANT 250G ",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 8.45,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "BISCOITO BAUD 335G 2UN",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 19.58,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "BISCOITO MARILAN 280G 2UN",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 16.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "AMEND YOKI 420G 1UN",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 16.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
+      "item": "SEGUILHO 7BOYS 400G 3UN",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 26.85,
+      "responsavel": "WALLACE FREIRE"
+    },
     {
       "data": "2026-11-07",
       "categoria": "COMIDA",
