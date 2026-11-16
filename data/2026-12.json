@@ -1,0 +1,58 @@
+{
+  "mes_referencia": "2026-12",
+  "label": "Dezembro/2026",
+  "status": "aberto",
+  "responsavel_caixa": "SG FREIRE",
+  "saldo_anterior": 188.94,
+
+  "contribuintes": [
+    {
+      "nome": "SG CASTRO",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-16"
+    },
+    {
+      "nome": "TEN ADRIANA",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-16"
+    },    
+    {
+      "nome": "SG RAUL 4/4",
+      "cota_sugerida": 30.00,
+      "pago": true,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-11-01"
+    },        
+    {
+      "nome": "SG FREIRE",
+      "cota_sugerida": 30.00,
+      "pago": false,
+      "valor_pago": 30.00,
+      "data_pagamento": "2026-12-01"
+    }
+  ],
+
+  "contribuintes_itens": [
+    {
+      "nome": "---",
+      "item": "---",
+      "data": "2026-12-01"
+    }
+  ],
+
+  "gastos": [    
+    {
+      "data": "2026-11-01",
+      "categoria": "COMIDA",
+      "item": "---",
+      "local": "---",
+      "quantidade": 1,
+      "valor_total": 00.00,
+      "responsavel": "WALLACE FREIRE"
+    }
+  ]
+}
