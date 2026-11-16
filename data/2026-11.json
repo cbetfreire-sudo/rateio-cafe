@@ -160,6 +160,24 @@
     {
       "data": "2026-11-10",
       "categoria": "COMIDA",
+      "item": "0 CAL 80ML STEVIA",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 12.95,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-15",
+      "categoria": "COMIDA",
+      "item": "AMENDOIM JAPA 1,01KG",
+      "local": "ASSAI",
+      "quantidade": 1,
+      "valor_total": 27.90,
+      "responsavel": "WALLACE FREIRE"
+    },
+    {
+      "data": "2026-11-10",
+      "categoria": "COMIDA",
       "item": "MEL SOL 450G SILV",
       "local": "ASSAI",
       "quantidade": 1,
